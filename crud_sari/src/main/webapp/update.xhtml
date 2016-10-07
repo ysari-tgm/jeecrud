@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="https://java.sun.com/jsf/core">
+<h:head>
+	<title>Sari - CRUD - Update</title>
+</h:head>
+<h:body>
+	<h:form id="updateForm">
+		<p:dataTable id="radioDT" var="user" value="#{userBean.users}"
+			selection="#{userBean.updateUser}" rowKey="#{user.id}">
+			<f:facet name="header">
+					Benutzerauswahl
+				</f:facet>
+			<p:column selectionMode="single" style="text-align:center" />
+			<p:column headerText="Id">
+				<h:outputText value="#{user.id}" />
+			</p:column>
+			<p:column headerText="Vorname">
+				<h:outputText value="#{user.vname}" />
+			</p:column>
+			<p:column headerText="Nachname">
+				<h:outputText value="#{user.nname}" />
+			</p:column>
+			<p:column headerText="Alter">
+				<h:outputText value="#{user.age}" />
+			</p:column>
+		</p:dataTable>
+		<br />
+		Vorname: 
+		<p:inputText style="width: 200px;" id="vname"
+			value="#{userBean.vname}" />
+		<br />
+		Nachname:
+		<p:inputText style="width: 200px;" id="nname"
+			value="#{userBean.nname}" />
+		<br />
+		Alter:
+		<p:inputText style="width: 200px;" id="age" value="#{userBean.age}" />
+		<br />
+		<p:commandButton style="width: 200px;" action="#{userBean.update}"
+			value="Aktualisieren" />
+		<p:button style="width: 200px;" outcome="index" value="Startseite" />
+	</h:form>
+</h:body>
+</html>
